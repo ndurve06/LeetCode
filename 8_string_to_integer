@@ -1,0 +1,38 @@
+class Solution:
+    def myAtoi(self, s) -> int:
+        s = s.strip()
+        if not s:
+            return 0
+        
+        ints = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        str_result = ""
+        sign = 1
+
+        if s[0] == "+" or s[0] == "-":
+            if s[0] == "-":
+                sign = -1
+            s = s[1:]
+            
+        for i in range(len(s)):
+            if s[i] in ints:
+                str_result += s[i]
+            else:
+                break
+
+        if str_result == "":
+            return 0
+        
+        result = int(str_result) * sign
+
+        if result < -2**31:
+            return -2**31
+        if result > 2**31 - 1:
+            return 2**31 - 1
+
+        return result
+
+testing = Solution()
+print(testing.myAtoi("1337c0d3"))
+
+#runtime: 0ms, beats 100%
+#memory: 19.29MB, beats 83.91%
