@@ -1,1 +1,1 @@
-Here are my attempts at the questions on LeetCode. The number at the start is the problem number.
+Here are my attempts at the questions on LeetCode. The number at the start is the problem number. Python and SQL is used.  
