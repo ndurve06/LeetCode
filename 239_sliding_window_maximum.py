@@ -1,0 +1,28 @@
+from collections import deque
+
+class Solution:
+    def maxSlidingWindow(self, nums, k):
+        dq = deque()
+        output = []
+
+        for i in range(len(nums)):
+            while dq and dq[0] <= i - k:
+                dq.popleft()
+
+            while dq and nums[dq[-1]] < nums[i]:
+                dq.pop()
+
+            dq.append(i)
+
+            if i >= k - 1:
+                output.append(nums[dq[0]])
+        
+        return output
+    
+testing = Solution()
+print(testing.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3))
+print(testing.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 2))
+print(testing.maxSlidingWindow([1], 1))
+
+#runtime: 192ms, beats 50.05%
+#memory: 35.26MB, beats 46.14%
